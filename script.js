@@ -26,7 +26,11 @@ function createGrid(numCells) {
     const cells = Array.from(rows, row => createFlex(numCells, 'cell', row, 'horizontal'));
 
 //Set a hover effect so that the cells change color when the mouse hovers on them
-    container.addEventListener('mouseover', (e) => e.target.classList.toggle('hoverEff'));
+    container.addEventListener('mouseover', (e) => {
+	if (e.target.classList[0] === 'cell') {
+	    e.target.classList.toggle('hoverEff');
+	}
+    });
 }
 
 createGrid(initGrid);
