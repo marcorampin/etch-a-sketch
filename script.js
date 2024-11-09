@@ -22,10 +22,8 @@ function createFlex(numElements, elClass, parentEl, flexDirection){
 
 function createGrid(numCells) {
     const container = document.querySelector('#container');
-    const rows = createFlex(numCells, 'row', container, 'vertical');
-    for (row of rows) {
-	const cells = createFlex(numCells, 'cell', row, 'horizontal');
-    }
+    const rows = Array.from(createFlex(numCells, 'row', container, 'vertical'));
+    const cells = Array.from(rows, row => createFlex(numCells, 'cell', row, 'horizontal'));
 
 //Set a hover effect so that the cells change color when the mouse hovers on them
     container.addEventListener('mouseover', (e) => e.target.classList.toggle('hoverEff'));
