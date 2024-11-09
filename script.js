@@ -39,11 +39,14 @@ function removeGrid() {
 
 }
 
-function validateGridNum() {
+function isValidNum(gridNum) {
+    return ((Number(gridNum)) && (gridNum > 0) && (gridNum <= 100));
 }
 
 function btnGridCreation(button) {
-    gridNum = prompt("How many cells per side? (max 100)");
+    do {
+	gridNum = parseInt(prompt("How many cells per side? (max 100)"));
+    }while(!isValidNum(gridNum));
     removeGrid();
     createGrid(container, gridNum);
 }
